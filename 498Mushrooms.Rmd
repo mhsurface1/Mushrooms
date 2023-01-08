@@ -1,0 +1,26 @@
+---
+title: "498Mushroom"
+author: "Michael Surface and Kagen Walters"
+date: '2022-11-09'
+output: html_document
+---
+
+```{r}
+shroom <- read.csv("mushrooms.csv", stringsAsFactors = TRUE)
+str(shroom)
+
+shroom$veil_type <- NULL
+table(shroom$class)
+```
+
+```{r}
+library(RWeka)
+shroom_1R <- OneR(class ~ ., data = shroom)
+shroom_1R
+summary(shroom_1R)
+```
+
+```{r}
+shroom_JRip <- JRip(class ~ ., data = shroom)
+shroom_JRip
+```
